@@ -1,0 +1,64 @@
+<md-toolbar>  
+    <div class="md-toolbar-tools">
+        <h2>Buy Stock</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="stockPickerCtrl.cancel()">
+            <i class="material-icons">cancel</i>
+        </md-button>
+    </div>
+</md-toolbar>
+<md-content layout-padding>
+    <form ng-submit="$event.preventDefault()" name='stockPickForm'>
+        <md-autocomplete
+            name="ticker"
+            required
+            md-floating-label="Stock Ticker"
+            md-selected-item="stockPickerCtrl.selectedItem"
+            md-search-text="stockPickerCtrl.searchText"
+            md-items="item in stockPickerCtrl.querySearch(stockPickerCtrl.searchText)"
+            md-item-text="item.name"
+            md-min-length="3"
+            placeholder="Enter Nasdaq Stock Pick"
+            md-autofocus>
+            <md-item-template>
+                <span md-highlight-text="stockPickerCtrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
+            </md-item-template>
+            <md-not-found>
+                No Nasdaq ticker matching "{{stockPickerCtrl.searchText}}" were found.
+            </md-not-found>
+        </md-autocomplete>
+        <md-input-container class="md-block">
+            <label>Quantity</label>
+            <input 
+                required 
+                type="number" 
+                name="qty" 
+                ng-model="stockPickerCtrl.qty" 
+                min="1"
+            />
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Floor Sell Price</label>
+            <input 
+                type="number" 
+                name="sell_min" 
+                ng-model="stockPickerCtrl.sell_floor" 
+                min="1"
+            />
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Ceiling Sell Price</label>
+            <input 
+                type="number" 
+                name="sell_max" 
+                ng-model="stockPickerCtrl.sell_ceiling" 
+                min="1"
+            />
+        </md-input-container>
+        <md-button 
+            ng-disabled="stockPickForm.$invalid"
+            class="md-primary md-raised"> 
+            Buy {{ stockPickerCtrl.searchText }}! 
+        </md-button>
+    </form>
+</md-content>
