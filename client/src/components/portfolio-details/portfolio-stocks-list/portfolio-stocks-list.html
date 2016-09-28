@@ -1,0 +1,10 @@
+<md-content>
+    <md-list flex layout-fill>
+        <portfolio-stocks-list-item 
+            stock="s"
+            ng-repeat="s in portfolioStocksListCtrl.stocks track by $index"
+            sell-stock="portfolioStocksListCtrl.onStockSell(s)">
+            <md-divider></md-divider>
+        </portfolio-stocks-list-item>
+    </md-list>
+</md-content>

@@ -15,8 +15,25 @@ import { routerConfig } from './routeConfig';
 // Store
 import reduxConfig from './reduxConfig';
 
+// Service
+import { APIService } from './common/api/api.service';
+import { PortfoliosService } from './common/services/portfolios.service';
+
 // Components
 import { AppComponent } from './components/app';
+
+import { 
+    PortfoliosListComponent, 
+    PortfoliosListItemComponent 
+} from './components/portfolios-list';
+
+import { 
+    PortfolioDetailsComponent, 
+    PortfolioSnapshotComponent, 
+    PortfolioStocksListComponent, 
+    PortfolioStocksListItemComponent 
+} from './components/portfolio-details';
+
 import { StockPickerComponent } from './components/stock-picker';
 
 // Angular Material Theme
@@ -31,7 +48,19 @@ const app = angular.module('app', [
 ]);
 
 app.component('app', AppComponent);
+
+app.component('portfoliosList', PortfoliosListComponent);
+app.component('portfoliosListItem', PortfoliosListItemComponent);
+
+app.component('portfolioDetails', PortfolioDetailsComponent);
+app.component('portfolioSnapshot', PortfolioSnapshotComponent);
+app.component('portfolioStocksList', PortfolioStocksListComponent);
+app.component('portfolioStocksListItem', PortfolioStocksListItemComponent);
+
 app.component('stockPicker', StockPickerComponent);
+
+app.service('APIService', APIService);
+app.service('PortfoliosService', PortfoliosService);
 
 // Load config for ui-router
 app.config(routerConfig);

@@ -10,71 +10,33 @@ import './app.scss';
 
 export class AppComponent {
     static $inject = [
-        '$mdSidenav'
+        '$mdSidenav',
+        'PortfoliosService'
     ]
 
-    constructor($mdSidenav) {
+    constructor($mdSidenav, service) {
         this.$mdSidenav = $mdSidenav;
+        this.service = service;
 
-        this.portfolios = [{
-            "name": "Technologies",
-            "value": "1450.34",
-            "change": "344.2"
-        },{
-            "name": "Pharma",
-            "value": "3439.12",
-            "change": "-390.2"
-        }];
+        this.portfolios = [];
+        this.currentPortfolio = null;
+    }
 
-        this.currentPortfolio = {
-            "name": "Technologies",
-            "value": "1450.34",
-            "change": "344.2"
-        }
-
-        this.portoflioStocks = [{
-            "name": "Marvell MRVL",
-            "ticker": "MRVL",
-            "qty": "2",
-            "paid": "124.45",
-            "last": "120.67",
-            "change": ".2"
-        },{
-            "name": "Amazon.com AMZN",
-            "ticker": "AMZN",
-            "qty": "23",
-            "paid": "34.23",
-            "last": "120.4",
-            "change": "-3.2"
-        },{
-            "name": "Netflix NFLX",
-            "ticker": "NFLX",
-            "qty": "1",
-            "paid": "57",
-            "last": "60",
-            "change": "0"
-        },{
-            "name": "Cisco Systems CSCO",
-            "ticker": "CSCO",
-            "qty": "51",
-            "paid": "39.44",
-            "last": "35.3",
-            "change": "-.98"
-        },{
-            "name": "Microsoft MSFT",
-            "ticker": "MSFT",
-            "qty": "9",
-            "paid": "938.23",
-            "last": "800.4",
-            "change": "-13.59"
-        },{
-            "name": "Apple AAPL",
-            "ticker": "AAPL",
-            "qty": "84",
-            "paid": "234.34",
-            "last": "250.3",
-            "change": "34.5"
-        }]
+    $onInit() {
+        this.service.fetchPortfolios().then((portfolios) => {
+            this.portfolios = portfolios.map(p => ({
+                                        name: p.name,
+                                        value: p.stocks.map(s => (s.qty * s.last)).reduce((prev, curr) => (prev + curr)),
+                                        change: p.stocks.map(s => (s.qty * (s.last - s.price))).reduce((prev, curr) => (prev + curr)),
+                                        cost: p.stocks.map(s => (s.qty * s.price)).reduce((prev, curr) => (prev + curr))
+                                    })).map(p => ({
+                                        name: p.name,
+                                        value: p.value,
+                                        change: p.change,
+                                        cost: p.cost,
+                                        changePct: ((p.value - p.cost)/p.cost)*100
+                                    }));
+        });
     }
 
     toggleStockPicker () {
@@ -85,8 +47,15 @@ export class AppComponent {
         return this.$mdSidenav('stockPicker').isOpen();
     }
 
-    calcChangePct (val, change) {
-        return (change/val)*100;
+    onPortfolioSelect (portfolio) {
+        console.log(portfolio);
+        this.currentPortfolio = {
+            "name": "Technologies",
+            "value": "1450.34",
+            "change": "344.2",
+            "cost": 10,
+            "changePct": 30
+        }
     }
 
 }

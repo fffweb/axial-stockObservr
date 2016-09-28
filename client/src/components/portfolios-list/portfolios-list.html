@@ -1,0 +1,15 @@
+<md-toolbar layout="row" class="md-hue-1">
+    <div class="md-toolbar-tools">
+        <h2>Portfolios</h2>
+    </div>
+</md-toolbar>
+<md-content>
+    <md-list flex layout-fill>
+        <portfolios-list-item 
+            portfolio="p"
+            ng-repeat="p in portfoliosListCtrl.portfolios track by $index"
+            select-portfolio="portfoliosListCtrl.selectedPortfolio(p)">
+            <md-divider></md-divider>
+        </portfolios-list-item>
+    </md-list>
+</md-content>

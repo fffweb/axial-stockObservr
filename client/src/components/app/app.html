@@ -20,75 +20,18 @@
             md-component-id="portfolios"
             md-is-locked-open="true"
             md-whiteframe="4">
-            <md-toolbar layout="row" class="md-hue-1">
-                <div class="md-toolbar-tools">
-                    <h2>Portfolios</h2>
-                </div>
-            </md-toolbar>
-            <md-content>
-                <md-list flex>
-                    <md-list-item class="md-3-line" ng-repeat="p in appCtrl.portfolios" ng-click="null">
-                        <div class="md-list-item-text" layout="column">
-                            <h3>{{ p.name }}</h3>
-                            <p>
-                                Value: {{ p.value | currency }}
-                            </p>
-                            <p>
-                                Change:
-                                <span ng-class="{'trend-up': p.change >= 0, 'trend-down': p.change < 0}">
-                                    {{ p.change | currency }} ({{ appCtrl.calcChangePct(p.value, p.change) | number:2 }}%)
-                                </span>
-                            </p>
-                        </div>
-                        <md-divider></md-divider>
-                    </md-list-item>
-                </md-list>
-            </md-content>
+            <portfolios-list 
+                portfolios="appCtrl.portfolios" 
+                select-portfolio="appCtrl.onPortfolioSelect($event)">
+            </portfolios-list>
         </md-sidenav>
         <div flex>
-            <md-toolbar layout="row" class="md-hue-2">
-                <div class="md-toolbar-tools">
-                    <h4>{{ appCtrl.currentPortfolio.name }}</h4>
-                    <span flex></span>
-                    <span layout-padding>
-                        <b>Current Value:</b> 
-                        {{ appCtrl.currentPortfolio.value | currency }}
-                    </span>
-                    <span layout-padding>
-                        <b>Change:</b> 
-                        <span ng-class="{'trend-up': appCtrl.currentPortfolio.change >= 0, 'trend-down': appCtrl.currentPortfolio.change < 0}">
-                            {{ appCtrl.currentPortfolio.change | currency }} ({{ appCtrl.calcChangePct(appCtrl.currentPortfolio.value, appCtrl.currentPortfolio.change) | number:2 }}%)
-                        </span>
-                    </span>
-                </div>
-            </md-toolbar>
-            <md-content>
-                <md-list flex>
-                    <md-list-item ng-repeat="s in appCtrl.portoflioStocks" class="noright" layout="row" ng-click="null">
-                        <div class="md-list-item-text" layout="row" layout-fill>
-                            <span flex="50" layout-padding class="text-align-left">
-                                {{ s.name }}
-                            </span>
-                            <span flex></span>
-                            <span flex="15" layout-padding class="text-align-right">
-                                {{ s.last | currency }}
-                            </span>
-                            <span flex="15" layout-padding class="text-align-right" ng-class="{'trend-up': s.change >= 0, 'trend-down': s.change < 0}">
-                                {{ s.change | number:2 }} 
-                            </span>
-                            <span flex="15" layout-padding class="text-align-right" ng-class="{'trend-up': s.change >= 0, 'trend-down': s.change < 0}">
-                                ({{ appCtrl.calcChangePct(s.last, s.change) | number:2 }}%)
-                            </span>
-                        </div>
-                        <md-button class="md-raised md-warn" ng-click="null" flex="10">
-                            Sell {{ s.ticker }}
-                        </md-button>
-                        <md-divider></md-divider>
-                    </md-list-item>
-                </md-list>
-            </md-content>
+            <portfolio-details portfolio="appCtrl.currentPortfolio"></portfolio-details>
         </div>
-        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="stockPicker" md-disable-backdrop="false">
+        <md-sidenav 
+            class="md-sidenav-right md-whiteframe-4dp" 
+            md-component-id="stockPicker" 
+            md-disable-backdrop="false">
             <stock-picker close="appCtrl.toggleStockPicker()"></stock-picker>
         </md-sidenav>
     </div>

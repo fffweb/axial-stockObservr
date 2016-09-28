@@ -1,0 +1,16 @@
+<md-toolbar layout="row" class="md-hue-2">
+    <div class="md-toolbar-tools">
+        <h4>{{ portfolioSnapshotCtrl.portfolio.name }}</h4>
+        <span flex></span>
+        <span layout-padding>
+            <b>Current Value:</b> 
+            {{ portfolioSnapshotCtrl.portfolio.value | currency }}
+        </span>
+        <span layout-padding>
+            <b>Change:</b> 
+            <span ng-class="{'trend-up': portfolioSnapshotCtrl.portfolio.change >= 0, 'trend-down': portfolioSnapshotCtrl.portfolio.change < 0}">
+                {{ portfolioSnapshotCtrl.portfolio.change | currency }} ({{ portfolioSnapshotCtrl.changePct() | number:2 }}%)
+            </span>
+        </span>
+    </div>
+</md-toolbar>

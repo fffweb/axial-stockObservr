@@ -209,27 +209,33 @@
         "stocks": [{
             "stockId": 37,
             "qty": 2,
-            "price": 124
+            "price": 124,
+            "last": 120
         },{
             "stockId": 46,
             "qty": 23,
-            "price": 34
+            "price": 34,
+            "last": 30
         },{
             "stockId": 12,
             "qty": 1,
-            "price": 57
+            "price": 57,
+            "last": 90
         },{
             "stockId": 9,
             "qty": 51,
-            "price": 39
+            "price": 39,
+            "last": 75
         },{
             "stockId": 3,
             "qty": 9,
-            "price": 938
+            "price": 938,
+            "last": 9.3
         },{
             "stockId": 4,
             "qty": 84,
-            "price": 234
+            "price": 234,
+            "last": 34
         }],
         "name": "Techs"
     }, {
@@ -237,19 +243,23 @@
         "stocks": [{
             "stockId": 48,
             "qty": 2,
-            "price": 124
+            "price": 124,
+            "last": 109
         },{
             "stockId": 51,
             "qty": 23,
-            "price": 34
+            "price": 34,
+            "last": 239.43
         },{
             "stockId": 34,
             "qty": 1,
-            "price": 57
+            "price": 57,
+            "last": 43
         },{
             "stockId": 14,
             "qty": 51,
-            "price": 39
+            "price": 39,
+            "last": 12
         }],
         "name": "Pharma"
     }]
