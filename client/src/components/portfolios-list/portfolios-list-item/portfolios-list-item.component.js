@@ -4,16 +4,10 @@ import template from './portfolios-list-item.html';
 
 @Component({
     bindings: {
-        portfolio: '<',
-        selectPortfolio: '&'
+        portfolio: '<'
     },
     controllerAs: 'portfoliosListItemCtrl',
     template
 })
 
-export class PortfoliosListItemComponent {
-    select() {
-        console.log('Portfolio '+this.portfolio.name+' selected in item');
-        this.selectPortfolio({ portfolio: this.portfolio });
-    }
-}
+export class PortfoliosListItemComponent {}

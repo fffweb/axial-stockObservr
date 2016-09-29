@@ -3,17 +3,32 @@ import { Component } from 'client/src/utils';
 import template from './portfolios-list.html';
 
 @Component({
-    bindings: {
-        portfolios: '<',
-        selectPortfolio: '&'
-    },
     controllerAs: 'portfoliosListCtrl',
     template
 })
 
 export class PortfoliosListComponent {
-    selectedPortfolio(portfolio) {
-        console.log('Portfolio '+portfolio.name+' selected in item list');
-        this.selectPortfolio(portfolio);
+    static $inject = [
+        '$ngRedux',
+        'PortfoliosService'
+    ];
+
+    constructor($ngRedux, PortfoliosService) {
+        this.$ngRedux = $ngRedux;
+        this.portfolioService = PortfoliosService;
+    }
+
+    $onInit() {
+        this.disconnect = this.$ngRedux.connect(state => ({
+            portfoliosList: state.portfoliosList,
+            currentPortfolio: state.currentPortfolio
+        }))((state, actions) => {
+            this.portfoliosList = state.portfoliosList;
+            this.currentPortfolio = state.currentPortfolio;
+        });
+    }
+
+    $onDestroy() {
+        this.disconnect();
     }
 }

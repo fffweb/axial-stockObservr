@@ -5,7 +5,7 @@
  * logger: outputs every action in the system https://github.com/evgenyrodionov/redux-logger
  * devToolsExtension: use the chrome browser extension
  */
-
+import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import reducers from './common/stores/rootReducer';
 
@@ -18,7 +18,7 @@ export default function store($ngReduxProvider) {
         collapsed: true
     });
 
-    const middlewares = ['ngUiRouterMiddleware', logger];
+    const middlewares = [thunk, 'ngUiRouterMiddleware', logger];
 
     const enhancers = [ window.devToolsExtension ? window.devToolsExtension() : f => f ];
 

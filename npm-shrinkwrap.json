@@ -4027,6 +4027,11 @@
       "from": "redux-observable@>=0.12.0 <0.13.0",
       "resolved": "https://registry.npmjs.org/redux-observable/-/redux-observable-0.12.0.tgz"
     },
+    "redux-thunk": {
+      "version": "2.1.0",
+      "from": "redux-thunk@>=2.1.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/redux-thunk/-/redux-thunk-2.1.0.tgz"
+    },
     "redux-ui-router": {
       "version": "0.6.0",
       "from": "redux-ui-router@>=0.6.0 <0.7.0",

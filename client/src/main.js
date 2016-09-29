@@ -17,7 +17,7 @@ import reduxConfig from './reduxConfig';
 
 // Service
 import { APIService } from './common/api/api.service';
-import { PortfoliosService } from './common/services/portfolios.service';
+import { PortfoliosService } from './common/actions/portfolios.service';
 
 // Components
 import { AppComponent } from './components/app';
