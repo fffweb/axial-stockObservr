@@ -1,3 +1,5 @@
+import PortfoliosActions from 'client/src/common/actions/portfolios.actions'
+
 import { Component } from 'client/src/utils';
 
 import template from './portfolio-details.html';
@@ -9,21 +11,34 @@ import template from './portfolio-details.html';
 
 export class PortfolioDetailsComponent {
     static $inject = [
-        '$ngRedux'
+        '$ngRedux',
+        '$stateParams'
     ];
 
-    constructor($ngRedux) {
+    constructor($ngRedux, $stateParams) {
         this.$ngRedux = $ngRedux;
+        this.$stateParams = $stateParams;
+        this.currentPortfolioStocksList = Observable.from([]);
+        this.currentPortfolio = Observable.of({});
     }
 
     $onInit() {
         this.disconnect = this.$ngRedux.connect(state => ({
-            currentPortfolioStocks: state.currentPortfolioStocks,
+            currentPortfolioStocksList: state.currentPortfolioStocksList,
             currentPortfolio: state.currentPortfolio
-        }))((state, actions) => {
-            this.currentPortfolioStocks = state.currentPortfolioStocks;
+        }))((state, PortfoliosActions) => {
+            this.currentPortfolioStocksList = state.currentPortfolioStocksList;
             this.currentPortfolio = state.currentPortfolio;
         });
+
+        // Fetch the portfolio details
+        this.$ngRedux.dispatch(PortfoliosActions.requestPortfolioDetails(this.$stateParams.id));
+
+        // Fetch the portofolio financials
+        this.$ngRedux.dispatch(PortfoliosActions.requestPortfolioFinancials(this.$stateParams.id));
+
+        // Fetch the portfolio stocs list
+        this.$ngRedux.dispatch(PortfoliosActions.requestPortfolioStocksList(this.$stateParams.id));
     }
 
     $onDestroy() {

@@ -1,26 +1,29 @@
 import angular from 'angular';
-
 import 'angular-material/angular-material.css';
-
 import ngAnimate from 'angular-animate';
 import ngMaterial from 'angular-material';
-
 import uiRouter from 'angular-ui-router';
 import ngRedux from 'ng-redux';
 import ngReduxUiRouter from 'redux-ui-router';
+import 'rxjs';
 
-// Router
-import { routerConfig } from './routeConfig';
+//////////////
+// Settings //
+//////////////
+import { routerConfig } from './configs/route.config';
+import { themeConfig } from './configs/theme.config';
+import { storeConfig } from './configs/store.config';
 
-// Store
-import reduxConfig from './reduxConfig';
+//////////////
+// Services //
+//////////////
+// import { APIService } from './common/api/api.service';
+// import PortfoliosService from './common/services/portfolios.service';
+// import { StockQuoteAPIService } from './common/api/stock-quote-api.service';
 
-// Service
-import { APIService } from './common/api/api.service';
-import { StockQuoteAPIService } from './common/api/stock-quote-api.service';
-import { PortfoliosService } from './common/actions/portfolios.service';
-
-// Components
+////////////////
+// Components //
+////////////////
 import { AppComponent } from './components/app';
 
 import { 
@@ -37,9 +40,9 @@ import {
 
 import { StockPickerComponent } from './components/stock-picker';
 
-// Angular Material Theme
-import { themeConfig } from './themeConfig';
-
+/////////
+// App //
+/////////
 const app = angular.module('app', [
     ngRedux,
     uiRouter,
@@ -48,27 +51,22 @@ const app = angular.module('app', [
     ngAnimate
 ]);
 
+// Load components
 app.component('app', AppComponent);
-
 app.component('portfoliosList', PortfoliosListComponent);
 app.component('portfoliosListItem', PortfoliosListItemComponent);
-
 app.component('portfolioDetails', PortfolioDetailsComponent);
 app.component('portfolioSnapshot', PortfolioSnapshotComponent);
 app.component('portfolioStocksList', PortfolioStocksListComponent);
 app.component('portfolioStocksListItem', PortfolioStocksListItemComponent);
-
 app.component('stockPicker', StockPickerComponent);
 
-app.service('APIService', APIService);
-app.service('StockQuoteAPIService', StockQuoteAPIService);
-app.service('PortfoliosService', PortfoliosService);
+// Load services
+// app.service('PortfoliosService', PortfoliosService);
+// app.service('APIService', APIService);
+// app.service('StockQuoteAPIService', StockQuoteAPIService);
 
-// Load config for ui-router
+// Load configs
 app.config(routerConfig);
-
-// Load Theme config
 app.config(themeConfig);
-
-// Load Redux store config
-app.config(reduxConfig);
+app.config(storeConfig);

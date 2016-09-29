@@ -4,22 +4,15 @@
 
 import { combineReducers } from 'redux';
 
-// the built-in reducer for redux-ui-router
-import { router } from 'redux-ui-router';
-
-// our custom data reducer for the data points
+// import { router } from 'redux-ui-router'; // Store the router state in the redux store - causing errors with epics
 import { stocksListReducer } from './stocks-list.reducer';
 import { portfoliosListReducer } from './portfolios-list.reducer';
 import { currentPortfolioDetailsReducer } from './current-portfolio-details.reducer';
-import { currentPortfolioStocksReducer } from './current-portfolio-stocks.reducer';
+import { currentPortfolioStocksListReducer } from './current-portfolio-stocks-list.reducer';
 
-// our custom data reducer for the data points
-// ADD REDUCERS HERE
-
-export default combineReducers({
-    router,
+export const rootReducer = combineReducers({
     stocksList: stocksListReducer,
     portfoliosList: portfoliosListReducer,
     currentPortfolio: currentPortfolioDetailsReducer,
-    currentPortfolioStocks: currentPortfolioStocksReducer
+    currentPortfolioStocksList: currentPortfolioStocksListReducer
 });

@@ -1,7 +1,4 @@
-import {
-    API_STOCK_QUOTE_URL
-}
-from './constants';
+import { API_STOCK_QUOTE_URL } from './api.constants';
 
 export class StockQuoteAPIService {
     static $inject = [
