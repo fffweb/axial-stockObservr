@@ -9,7 +9,7 @@
         <span layout-padding>
             <b>Change:</b> 
             <span ng-class="{'trend-up': portfolioSnapshotCtrl.portfolio.change >= 0, 'trend-down': portfolioSnapshotCtrl.portfolio.change < 0}">
-                {{ portfolioSnapshotCtrl.portfolio.change | currency }} ({{ portfolioSnapshotCtrl.changePct() | number:2 }}%)
+                {{ portfolioSnapshotCtrl.portfolio.change | currency }} ({{ portfolioSnapshotCtrl.portfolio.changePct | number:2 }}%)
             </span>
         </span>
     </div>

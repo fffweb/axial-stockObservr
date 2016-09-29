@@ -25,25 +25,36 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
         name: 'app.portfolios',
         url: '/portfolios',
         resolve: {
-            bounds: function($ngRedux, PortfoliosService) {
+            getPortfolios: function($ngRedux, PortfoliosService) {
                 return $ngRedux.dispatch(PortfoliosService.fetchPortfolios());
+            },
+            getPorfoliosFinancials: function(getPortfolios, $ngRedux, PortfoliosService) {
+                return $ngRedux.getState().portfoliosList.forEach(p => {
+                    return $ngRedux.dispatch(PortfoliosService.fetchPortfolioFinancials(p.id))
+                });
             }
         }
     }
 
-    var portfolioDetailState = {
-        name: 'app.portfolio',
-        url: '/portfolio/:id',
+    var portfolioDetailsState = {
+        name: 'app.portfolios.details',
+        url: '/{id:int}',
         resolve: {
-            bounds: function($ngRedux, PortfoliosService, $stateParams) {
+            getPortfolioDetails: function($ngRedux, PortfoliosService, $stateParams) {
                 return $ngRedux.dispatch(PortfoliosService.fetchPortfolioDetails($stateParams.id));
+            },
+            getPorfoliosFinancials: function(getPortfolioDetails, $ngRedux, PortfoliosService, $stateParams) {
+                return $ngRedux.dispatch(PortfoliosService.fetchPortfolioFinancials($stateParams.id))
+            },
+            getPortfolioStocksList: function(getPortfolioDetails, $ngRedux, PortfoliosService, $stateParams) {
+                return $ngRedux.dispatch(PortfoliosService.fetchPortfolioStocksList($stateParams.id));
             }
         }
     }
 
     $stateProvider.state(appState);
     $stateProvider.state(portfoliosState);
-    $stateProvider.state(portfolioDetailState);
+    $stateProvider.state(portfolioDetailsState);
 
     $urlRouterProvider.otherwise('/portfolios');
 }

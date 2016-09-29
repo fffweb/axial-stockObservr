@@ -9,13 +9,11 @@ import template from './portfolios-list.html';
 
 export class PortfoliosListComponent {
     static $inject = [
-        '$ngRedux',
-        'PortfoliosService'
+        '$ngRedux'
     ];
 
-    constructor($ngRedux, PortfoliosService) {
+    constructor($ngRedux) {
         this.$ngRedux = $ngRedux;
-        this.portfolioService = PortfoliosService;
     }
 
     $onInit() {

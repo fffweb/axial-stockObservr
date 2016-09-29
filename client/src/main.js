@@ -17,6 +17,7 @@ import reduxConfig from './reduxConfig';
 
 // Service
 import { APIService } from './common/api/api.service';
+import { StockQuoteAPIService } from './common/api/stock-quote-api.service';
 import { PortfoliosService } from './common/actions/portfolios.service';
 
 // Components
@@ -60,6 +61,7 @@ app.component('portfolioStocksListItem', PortfolioStocksListItemComponent);
 app.component('stockPicker', StockPickerComponent);
 
 app.service('APIService', APIService);
+app.service('StockQuoteAPIService', StockQuoteAPIService);
 app.service('PortfoliosService', PortfoliosService);
 
 // Load config for ui-router

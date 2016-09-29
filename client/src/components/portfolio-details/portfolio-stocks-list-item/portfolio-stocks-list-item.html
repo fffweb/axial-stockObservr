@@ -25,7 +25,7 @@
             layout-padding 
             class="text-align-right" 
             ng-class="{'trend-up': portfolioStocksListItemCtrl.stock.change >= 0, 'trend-down': portfolioStocksListItemCtrl.stock.change < 0}">
-            ({{ portfolioStocksListItemCtrl.changePct() | number:2 }}%)
+            ({{ portfolioStocksListItemCtrl.stock.changePct | number:2 }}%)
         </span>
     </div>
     <md-button class="md-raised md-warn" ng-click="portfolioStocksListItemCtrl.sell()" flex="10">

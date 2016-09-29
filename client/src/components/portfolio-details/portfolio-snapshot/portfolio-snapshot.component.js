@@ -10,8 +10,4 @@ import template from './portfolio-snapshot.html';
     template
 })
 
-export class PortfolioSnapshotComponent {
-    changePct () {
-        return (this.portfolio.change/this.portfolio.value)*100;
-    }
-}
+export class PortfolioSnapshotComponent {}

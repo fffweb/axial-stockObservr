@@ -11,11 +11,17 @@ import template from './portfolio-stocks-list.html';
 })
 
 export class PortfolioStocksListComponent {
-    changePct (s) {
-        return (s.change/s.value)*100;
+    static $inject = [
+        '$ngRedux',
+        'PortfoliosService'
+    ];
+
+    constructor($ngRedux, PortfoliosService) {
+        this.$ngRedux = $ngRedux;
+        this.portfoliosService = PortfoliosService;
     }
 
     onStockSell(stock) {
-        console.log('Sold stock:' + stock.ticker)
+        return this.$ngRedux.dispatch(this.portfoliosService.sellPortfolioStock(stock.id));
     }
 }

@@ -15,8 +15,4 @@ export class PortfolioStocksListItemComponent {
     sell() {
         this.sellStock({ stock: this.stock });
     }
-
-    changePct () {
-        return (this.stock.change/this.stock.last)*100;
-    }
 }
