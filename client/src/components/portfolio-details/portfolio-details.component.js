@@ -30,15 +30,6 @@ export class PortfolioDetailsComponent {
             this.currentPortfolioStocksList = state.currentPortfolioStocksList;
             this.currentPortfolio = state.currentPortfolio;
         });
-
-        // Fetch the portfolio details
-        this.$ngRedux.dispatch(PortfoliosActions.requestPortfolioDetails(this.$stateParams.id));
-
-        // Fetch the portofolio financials
-        this.$ngRedux.dispatch(PortfoliosActions.requestPortfolioFinancials(this.$stateParams.id));
-
-        // Fetch the portfolio stocs list
-        this.$ngRedux.dispatch(PortfoliosActions.requestPortfolioStocksList(this.$stateParams.id));
     }
 
     $onDestroy() {

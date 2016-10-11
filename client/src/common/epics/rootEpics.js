@@ -9,14 +9,22 @@ import {
     requestPortfoliosFinancialsEpic,
     fetchPortfolioFinancialsEpic,
     fetchPortfolioDetailsEpic,
-    fetchPortfolioStocksListEpic
+    requestPortfolioFinancialsEpic,
+    requestPortfolioStocksListEpic
 }
 from './portfolios.epics';
+
+import {
+    stateChangeFetchPortfolioDetailsEpic
+}
+from './routes.epics'
 
 export const rootEpics = combineEpics(
     fetchPortfoliosEpic,
     requestPortfoliosFinancialsEpic,
     fetchPortfolioFinancialsEpic,
     fetchPortfolioDetailsEpic,
-    fetchPortfolioStocksListEpic
+    requestPortfolioFinancialsEpic,
+    requestPortfolioStocksListEpic,
+    stateChangeFetchPortfolioDetailsEpic
 );

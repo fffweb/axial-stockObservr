@@ -14,13 +14,6 @@ import { routerConfig } from './configs/route.config';
 import { themeConfig } from './configs/theme.config';
 import { storeConfig } from './configs/store.config';
 
-//////////////
-// Services //
-//////////////
-// import { APIService } from './common/api/api.service';
-// import PortfoliosService from './common/services/portfolios.service';
-// import { StockQuoteAPIService } from './common/api/stock-quote-api.service';
-
 ////////////////
 // Components //
 ////////////////
@@ -60,11 +53,6 @@ app.component('portfolioSnapshot', PortfolioSnapshotComponent);
 app.component('portfolioStocksList', PortfolioStocksListComponent);
 app.component('portfolioStocksListItem', PortfolioStocksListItemComponent);
 app.component('stockPicker', StockPickerComponent);
-
-// Load services
-// app.service('PortfoliosService', PortfoliosService);
-// app.service('APIService', APIService);
-// app.service('StockQuoteAPIService', StockQuoteAPIService);
 
 // Load configs
 app.config(routerConfig);
