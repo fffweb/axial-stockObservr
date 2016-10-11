@@ -13,7 +13,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
     
     var appState = {
         name: 'app',
-        url: '/',
+        abstract: true,
         views: {
             '': {
                 template: '<app></app>'
@@ -21,7 +21,19 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
         }
     }
 
-    $stateProvider.state(appState);
+    var portfoliosState = {
+        name: 'app.portfolios',
+        url: '/portfolios'
+    }
 
-    $urlRouterProvider.otherwise('/');
+    var portfolioDetailsState = {
+        name: 'app.portfolios.details',
+        url: '/{id:int}'
+    }
+
+    $stateProvider.state(appState);
+    $stateProvider.state(portfoliosState);
+    $stateProvider.state(portfolioDetailsState);
+
+    $urlRouterProvider.otherwise('/portfolios');
 }

@@ -206,51 +206,80 @@
     }],
     "portfolios": [{
         "id": 1,
-        "stocks": [{
-            "stockId": 37,
-            "qty": 2,
-            "price": 124
-        },{
-            "stockId": 46,
-            "qty": 23,
-            "price": 34
-        },{
-            "stockId": 12,
-            "qty": 1,
-            "price": 57
-        },{
-            "stockId": 9,
-            "qty": 51,
-            "price": 39
-        },{
-            "stockId": 3,
-            "qty": 9,
-            "price": 938
-        },{
-            "stockId": 4,
-            "qty": 84,
-            "price": 234
-        }],
         "name": "Techs"
     }, {
         "id": 2,
-        "stocks": [{
-            "stockId": 48,
-            "qty": 2,
-            "price": 124
-        },{
-            "stockId": 51,
-            "qty": 23,
-            "price": 34
-        },{
-            "stockId": 34,
-            "qty": 1,
-            "price": 57
-        },{
-            "stockId": 14,
-            "qty": 51,
-            "price": 39
-        }],
         "name": "Pharma"
+    }],
+    "portfolios_stocks":[{
+        "id": 1,
+        "portfolioId": 1,
+        "stockId": 37,
+        "qty": 2,
+        "price": 124,
+        "last": 120
+    },{
+        "id": 2,
+        "portfolioId": 1,
+        "stockId": 46,
+        "qty": 23,
+        "price": 34,
+        "last": 30
+    },{
+        "id": 3,
+        "portfolioId": 1,
+        "stockId": 12,
+        "qty": 1,
+        "price": 57,
+        "last": 90
+    },{
+        "id": 4,
+        "portfolioId": 1,
+        "stockId": 9,
+        "qty": 51,
+        "price": 39,
+        "last": 75
+    },{
+        "id": 5,
+        "portfolioId": 1,
+        "stockId": 3,
+        "qty": 9,
+        "price": 938,
+        "last": 9.3
+    },{
+        "id": 6,
+        "portfolioId": 1,
+        "stockId": 4,
+        "qty": 84,
+        "price": 234,
+        "last": 34
+    },{
+        "id": 7,
+        "portfolioId": 2,
+        "stockId": 48,
+        "qty": 2,
+        "price": 124,
+        "last": 109
+    },{
+        "id": 8,
+        "portfolioId": 2,
+        "stockId": 51,
+        "qty": 23,
+        "price": 34,
+        "last": 239.43
+    },{
+        "id": 9,
+        "portfolioId": 2,
+        "stockId": 34,
+        "qty": 1,
+        "price": 57,
+        "last": 43
+    },{
+        "id": 10,
+        "portfolioId": 2,
+        "stockId": 14,
+        "qty": 51,
+        "price": 39,
+        "last": 12
     }]
 }

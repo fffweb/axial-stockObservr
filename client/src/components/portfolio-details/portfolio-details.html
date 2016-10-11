@@ -1,0 +1,12 @@
+<div ng-if="portfolioDetailsCtrl.currentPortfolio">
+    <portfolio-snapshot 
+        portfolio="portfolioDetailsCtrl.currentPortfolio"></portfolio-snapshot>
+    <portfolio-stocks-list 
+        stocks="portfolioDetailsCtrl.currentPortfolioStocksList"></portfolio-stocks-list>
+</div>
+<div ng-if="!portfolioDetailsCtrl.currentPortfolio" 
+    layout-fill 
+    layout="row" 
+    layout-align="center center">
+    <div>Pick a Portfolio</div>
+</div>
