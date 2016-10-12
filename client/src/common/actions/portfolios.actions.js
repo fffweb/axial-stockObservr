@@ -44,10 +44,15 @@ const requestSellPortfolioStock = portfolio_stock_id => ({
     }
 });
 
-const requestSellPortfolioStockFulfilled = portfolio_stock_id => ({
+const requestSellPortfolioStockFulfilled = payload => ({
     type: PORTFOLIOS.SELL_PORTFOLIO_STOCK_FULFILLED,
+    payload
+});
+
+const refreshPortfolioFinancials = portfolio_id => ({
+    type: PORTFOLIOS.REFRESH_PORTFOLIO_FINANCIALS,
     payload: {
-        portfolio_stock_id
+        portfolio_id
     }
 });
 
@@ -59,5 +64,6 @@ export default {
     requestPortfolioStocksList,
     requestPortfolioStocksListFulfilled,
     requestSellPortfolioStock,
-    requestSellPortfolioStockFulfilled
+    requestSellPortfolioStockFulfilled,
+    refreshPortfolioFinancials
 };

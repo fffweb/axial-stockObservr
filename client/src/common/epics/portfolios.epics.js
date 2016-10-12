@@ -16,7 +16,7 @@ export const fetchPortfoliosEpic = action$ =>
                 .map(PortfoliosActions.requestPortfoliosFulfilled)
         );
 
-// // Requests the financials for each portfolio
+// Requests the financials for each portfolio
 export const requestPortfoliosStocksListsEpic = action$ =>
     action$.ofType(PORTFOLIOS.REQUEST_PORTFOLIOS_LIST_FULFILLED)
         .mergeMap(action =>
@@ -52,5 +52,18 @@ export const sellPortfolioStocksListEpic = action$ =>
         .mergeMap(action => 
             PortfoliosService
                 .sellPortfolioStock(action.payload.portfolio_stock_id)
+                .map(payload => ({
+                    portfolio_id: action.payload.portfolio_id,
+                    portfolio_stock_id: action.payload.portfolio_stock_id
+                }))
                 .map(PortfoliosActions.requestSellPortfolioStockFulfilled)
+        );
+
+// Requests the financials for each portfolio
+export const refreshPortfolioFinancialsEpic = action$ =>
+    action$.ofType(PORTFOLIOS.SELL_PORTFOLIO_STOCK_FULFILLED)
+        .mergeMap(action =>
+            Observable
+                .of(action.payload)
+                .map(p => PortfoliosActions.refreshPortfolioFinancials(p.portfolio_id))
         );
