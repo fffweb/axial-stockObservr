@@ -3,6 +3,7 @@ import 'rxjs/add/observable/dom/ajax';
 
 import {
     API_PORTFOLIOS_PATH,
+    API_PORTFOLIO_STOCKS_PATH,
     PORTFOLIO_STOCKS_SUBPATH
 }
 from '../api/api.constants';
@@ -55,9 +56,7 @@ const fetchPortfolioStocksList = (portfolio_id) => (
 const sellPortfolioStock = (portfolio_stock_id) => (
     Observable.ajax
         .delete(`${API_PORTFOLIO_STOCKS_PATH}/${portfolio_stock_id}`)
-        .map(() => {
-            return { id: portfolio_stock_id }
-        })
+        .map(() => portfolio_stock_id )
 )
 
 export default { 

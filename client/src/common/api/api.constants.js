@@ -3,6 +3,7 @@ export const API_BASE_URL = 'http://localhost:3000';
 // API ressources mappings below:
 export const API_PORTFOLIOS_PATH = `${API_BASE_URL}/portfolios`;
 export const API_STOCKS_PATH = `${API_BASE_URL}/stocks`;
+export const API_PORTFOLIO_STOCKS_PATH = `${API_BASE_URL}/portfolios_stocks`;
 
 export const PORTFOLIO_STOCKS_SUBPATH = `portfolios_stocks`;
 

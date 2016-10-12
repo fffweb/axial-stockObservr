@@ -59,3 +59,12 @@ export const requestPortfolioStocksListEpic = action$ =>
                 .fetchPortfolioStocksList(action.payload.portfolio.id)
                 .map(PortfoliosActions.requestPortfolioStocksListFulfilled)
         );
+
+// Sell the portfolio stock
+export const sellPortfolioStocksListEpic = action$ =>
+    action$.ofType(PORTFOLIOS.SELL_PORTFOLIO_STOCK)
+        .mergeMap(action => 
+            PortfoliosService
+                .sellPortfolioStock(action.payload.portfolio_stock_id)
+                .map(PortfoliosActions.requestSellPortfolioStockFulfilled)
+        );

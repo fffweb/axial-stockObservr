@@ -60,8 +60,11 @@ const requestSellPortfolioStock = portfolio_stock_id => ({
     }
 });
 
-const requestSellPortfolioStockFulfilled = () => ({
-    type: PORTFOLIOS.SELL_PORTFOLIO_STOCK_FULFILLED
+const requestSellPortfolioStockFulfilled = portfolio_stock_id => ({
+    type: PORTFOLIOS.SELL_PORTFOLIO_STOCK_FULFILLED,
+    payload: {
+        portfolio_stock_id
+    }
 });
 
 export default { 
