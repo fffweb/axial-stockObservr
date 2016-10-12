@@ -6,10 +6,8 @@ import { combineEpics } from 'redux-observable';
 // our custom data reducer for the data points
 import {
     fetchPortfoliosEpic,
-    requestPortfoliosFinancialsEpic,
-    fetchPortfolioFinancialsEpic,
+    requestPortfoliosStocksListsEpic,
     fetchPortfolioDetailsEpic,
-    requestPortfolioFinancialsEpic,
     requestPortfolioStocksListEpic,
     sellPortfolioStocksListEpic
 }
@@ -22,10 +20,8 @@ from './routes.epics'
 
 export const rootEpics = combineEpics(
     fetchPortfoliosEpic,
-    requestPortfoliosFinancialsEpic,
-    fetchPortfolioFinancialsEpic,
+    requestPortfoliosStocksListsEpic,
     fetchPortfolioDetailsEpic,
-    requestPortfolioFinancialsEpic,
     requestPortfolioStocksListEpic,
     sellPortfolioStocksListEpic,
     stateChangeFetchPortfolioDetailsEpic

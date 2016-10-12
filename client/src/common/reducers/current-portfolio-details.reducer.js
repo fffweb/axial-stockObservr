@@ -1,4 +1,5 @@
 import { PORTFOLIOS } from '../constants/portfolios.constants';
+import { computePortfolioFinancials } from '../utils/portfolio.utils';
 
 const initialState = {};
 
@@ -8,12 +9,11 @@ export function currentPortfolioDetailsReducer(state = initialState, { meta, pay
         case PORTFOLIOS.REQUEST_PORTFOLIO_DETAILS_FULFILLED:
             return payload.portfolio || {};
 
-        case PORTFOLIOS.REQUEST_PORTFOLIO_FINANCIALS_FULFILLED:
-            if (payload && payload.portfolio.portfolio_id === state.id) {
-                return Object.assign({}, state, payload.portfolio);
-            } else {
-                return state;
+        case PORTFOLIOS.REQUEST_PORTFOLIO_STOCKS_LIST_FULFILLED:
+            if (payload && payload.portfolio_id === state.id) {
+                return Object.assign({}, state, computePortfolioFinancials(payload.portfolio_stocks));
             }
+            return state;
 
         default:
             return state;

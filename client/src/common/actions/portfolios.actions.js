@@ -25,20 +25,6 @@ const requestPortfolioDetailsFulfilled = portfolio => ({
     }
 });
 
-const requestPortfolioFinancials = portfolio_id => ({
-    type: PORTFOLIOS.REQUEST_PORTFOLIO_FINANCIALS,
-    payload: {
-        portfolio_id
-    }
-});
-
-const requestPortfolioFinancialsFulfilled = portfolio => ({
-    type: PORTFOLIOS.REQUEST_PORTFOLIO_FINANCIALS_FULFILLED,
-    payload: {
-        portfolio
-    }
-});
-
 const requestPortfolioStocksList = portfolio_id => ({
     type: PORTFOLIOS.REQUEST_PORTFOLIO_STOCKS_LIST,
     payload: {
@@ -46,11 +32,9 @@ const requestPortfolioStocksList = portfolio_id => ({
     }
 });
 
-const requestPortfolioStocksListFulfilled = portfolio_stocks => ({
+const requestPortfolioStocksListFulfilled = payload => ({
     type: PORTFOLIOS.REQUEST_PORTFOLIO_STOCKS_LIST_FULFILLED,
-    payload: {
-        portfolio_stocks
-    }
+    payload
 });
 
 const requestSellPortfolioStock = portfolio_stock_id => ({
@@ -72,8 +56,6 @@ export default {
     requestPortfoliosFulfilled,
     requestPortfolioDetails,
     requestPortfolioDetailsFulfilled,
-    requestPortfolioFinancials,
-    requestPortfolioFinancialsFulfilled,
     requestPortfolioStocksList,
     requestPortfolioStocksListFulfilled,
     requestSellPortfolioStock,

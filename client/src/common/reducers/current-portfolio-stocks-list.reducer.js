@@ -1,4 +1,5 @@
 import { PORTFOLIOS } from '../constants/portfolios.constants';
+import { computeStockChanges } from '../utils/portfolio.utils';
 
 const initialState = [];
 
@@ -6,7 +7,7 @@ export function currentPortfolioStocksListReducer(state = initialState, { meta, 
     switch (type) {
 
         case PORTFOLIOS.REQUEST_PORTFOLIO_STOCKS_LIST_FULFILLED:
-            return payload.portfolio_stocks || initialState;
+            return computeStockChanges(payload.portfolio_stocks) || initialState;
 
         case PORTFOLIOS.SELL_PORTFOLIO_STOCK_FULFILLED:
             return state.filter(stock => {
