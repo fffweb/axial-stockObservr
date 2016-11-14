@@ -5,6 +5,7 @@ import {
 } from '../constants/portfolios.constants';
 
 import PortfoliosActions from 'client/src/common/actions/portfolios.actions';
+import StocksActions from 'client/src/common/actions/stocks.actions';
 import PortfoliosService from 'client/src/common/services/portfolios.service';
 
 // Fetches the list of portfolios
@@ -16,7 +17,7 @@ export const fetchPortfoliosEpic = action$ =>
                 .map(PortfoliosActions.requestPortfoliosFulfilled)
         );
 
-// // Requests the financials for each portfolio
+// Requests the financials for each portfolio
 export const requestPortfoliosStocksListsEpic = action$ =>
     action$.ofType(PORTFOLIOS.REQUEST_PORTFOLIOS_LIST_FULFILLED)
         .mergeMap(action =>
@@ -27,7 +28,7 @@ export const requestPortfoliosStocksListsEpic = action$ =>
 // Fetches the portfolio details
 export const fetchPortfolioDetailsEpic = action$ =>
     action$.ofType(PORTFOLIOS.REQUEST_PORTFOLIO_DETAILS)
-        .mergeMap(action => 
+        .mergeMap(action =>
             PortfoliosService
                 .fetchPortfolioDetails(action.payload.portfolio_id)
                 .map(PortfoliosActions.requestPortfolioDetailsFulfilled)
@@ -36,7 +37,7 @@ export const fetchPortfolioDetailsEpic = action$ =>
 // Request the portfolio list of stocks once we get the portfolio details
 export const requestPortfolioStocksListEpic = action$ =>
     action$.ofType(PORTFOLIOS.REQUEST_PORTFOLIO_DETAILS_FULFILLED)
-        .mergeMap(action => 
+        .mergeMap(action =>
             PortfoliosService
                 .fetchPortfolioStocksList(action.payload.portfolio.id)
                 .map(payload => ({
@@ -46,10 +47,19 @@ export const requestPortfolioStocksListEpic = action$ =>
                 .map(PortfoliosActions.requestPortfolioStocksListFulfilled)
         );
 
+// Requests the stock details for each portfolio's stock
+export const requestPortfolioStocksDetailsEpic = action$ =>
+    action$.ofType(PORTFOLIOS.REQUEST_PORTFOLIO_STOCKS_LIST_FULFILLED)
+        .mergeMap(action =>
+            Observable.from(action.payload.portfolio_stocks)
+                .map(s => StocksActions.requestStockDetails(s.stockId))
+        );
+
+
 // Sell the portfolio stock
 export const sellPortfolioStocksListEpic = action$ =>
     action$.ofType(PORTFOLIOS.SELL_PORTFOLIO_STOCK)
-        .mergeMap(action => 
+        .mergeMap(action =>
             PortfoliosService
                 .sellPortfolioStock(action.payload.portfolio_stock_id)
                 .map(PortfoliosActions.requestSellPortfolioStockFulfilled)

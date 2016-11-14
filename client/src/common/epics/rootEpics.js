@@ -9,9 +9,15 @@ import {
     requestPortfoliosStocksListsEpic,
     fetchPortfolioDetailsEpic,
     requestPortfolioStocksListEpic,
+    requestPortfolioStocksDetailsEpic,
     sellPortfolioStocksListEpic
 }
 from './portfolios.epics';
+
+import {
+    requestStockDetailsEpic
+}
+from './stocks.epics';
 
 import {
     stateChangeFetchPortfolioDetailsEpic
@@ -23,6 +29,8 @@ export const rootEpics = combineEpics(
     requestPortfoliosStocksListsEpic,
     fetchPortfolioDetailsEpic,
     requestPortfolioStocksListEpic,
+    requestPortfolioStocksDetailsEpic,
     sellPortfolioStocksListEpic,
+    requestStockDetailsEpic,
     stateChangeFetchPortfolioDetailsEpic
 );

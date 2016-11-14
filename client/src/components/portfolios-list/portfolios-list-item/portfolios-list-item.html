@@ -7,7 +7,7 @@
         <p>
             Change:
             <span ng-class="{'trend-up': portfoliosListItemCtrl.portfolio.change >= 0, 'trend-down': portfoliosListItemCtrl.portfolio.change < 0}">
-                {{ portfoliosListItemCtrl.portfolio.change | currency }} 
+                {{ portfoliosListItemCtrl.portfolio.change | currency }}
                 ({{ portfoliosListItemCtrl.portfolio.changePct | number:2 }}%)
             </span>
         </p>

@@ -1,29 +1,29 @@
-<md-list-item 
-    class="noright" 
-    layout="row" 
+<md-list-item
+    class="noright"
+    layout="row"
     ng-click="null">
     <div class="md-list-item-text" layout="row" layout-fill>
         <span flex="50" layout-padding class="text-align-left">
             {{ portfolioStocksListItemCtrl.stock.name }}
         </span>
         <span flex></span>
-        <span 
-            flex="15" 
-            layout-padding 
+        <span
+            flex="15"
+            layout-padding
             class="text-align-right">
             {{ portfolioStocksListItemCtrl.stock.last | currency }}
         </span>
-        <span 
-            flex="15" 
-            layout-padding 
-            class="text-align-right" 
+        <span
+            flex="15"
+            layout-padding
+            class="text-align-right"
             ng-class="{'trend-up': portfolioStocksListItemCtrl.stock.change >= 0, 'trend-down': portfolioStocksListItemCtrl.stock.change < 0}">
-            {{ portfolioStocksListItemCtrl.stock.change | number:2 }} 
+            {{ portfolioStocksListItemCtrl.stock.change | number:2 }}
         </span>
-        <span 
-            flex="15" 
-            layout-padding 
-            class="text-align-right" 
+        <span
+            flex="15"
+            layout-padding
+            class="text-align-right"
             ng-class="{'trend-up': portfolioStocksListItemCtrl.stock.change >= 0, 'trend-down': portfolioStocksListItemCtrl.stock.change < 0}">
             ({{ portfolioStocksListItemCtrl.stock.changePct | number:2 }}%)
         </span>
